@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大飞的岛 🏝️</title>
+    <!-- 引入 Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts 引入更有木质和温润感的衬线与无衬线字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #fcfbfa; /* MUJI 经典的微暖标志性米白 */
+            color: #333333; /* 柔和的炭灰，避免死黑 */
+        }
+        /* 站点主标题使用思源黑体（Noto Sans SC）Medium 效果 */
+        .muji-title {
+            font-family: 'Noto Sans SC', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+        /* MUJI 风格链接按钮 */
+        .muji-link {
+            background: #ffffff;
+            color: #333333;
+            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 0 1px 4px rgba(17,24,39,0.03);
+        }
+        .muji-link:hover { box-shadow: 0 6px 18px rgba(17,24,39,0.06); }
+        /* Modal backdrop */
+        .modal-backdrop { background: rgba(0,0,0,0.36); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-[#7f0019]/10 selection:text-[#7f0019]">
+
+    <!-- 主体内容容器 -->
+    <main class="max-w-2xl w-full mx-auto px-6 pt-28 pb-20 space-y-24">
+        
+        <!-- 头部区域 (Header) - 居中超大号大飞的岛 -->
+        <header class="text-center space-y-6">
+            <div class="text-5xl md:text-7xl font-medium tracking-wider text-[#333333] muji-title select-none">
+                大飞的岛 🏝️
+            </div>
+            <div class="w-12 h-[2px] bg-[#7f0019] mx-auto my-4"></div> <!-- MUJI红点缀线条 -->
+            <p class="text-sm tracking-widest text-neutral-500 font-light flex flex-wrap justify-center gap-3 items-center">
+                <span>🚗 科技游牧民</span>
+                <span class="text-neutral-300">|</span>
+                <span>⚡ 新能源车评人</span>
+                <span class="text-neutral-300">|</span>
+                <span>💻 独立开发者</span>
+            </p>
+            <!-- 新增 MUJI 风格社交链接（位于 header 下方） -->
+            <div class="mt-4 flex items-center justify-center gap-3">
+                <a href="https://b23.tv/7Z8OmUP" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg muji-link hover:translate-y-[-1px] transition-transform text-sm">
+                    <span class="text-lg">📺</span>
+                    <span class="font-medium">宝藏小飞的 B 站 Vlog</span>
+                </a>
+                <button id="wechat-open" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg muji-link hover:translate-y-[-1px] transition-transform text-sm">
+                    <span class="text-lg">✍️</span>
+                    <span class="font-medium">微信公众号：宝藏大飞</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- 独立产品区 (Product) - 保留城市度量衡 -->
+        <section class="space-y-6">
+            <div class="flex items-center gap-3">
+                <span class="text-base">🚀</span>
+                <h2 class="text-xs uppercase tracking-widest text-neutral-400 font-medium">My Digital Product</h2>
+                <div class="h-[1px] bg-neutral-200 flex-1"></div>
+            </div>
+            
+            <!-- 城市度量衡卡片 (MUJI自然框线风格) -->
+            <a href="http://city.dafei.space" target="_blank" class="group block p-6 bg-white border border-neutral-200 hover:border-neutral-400 transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-baseline">
+                        <h3 class="text-lg font-medium text-neutral-800 flex items-center gap-2">
+                            <span>🏙️ 城市度量衡</span>
+                            <span class="text-[10px] tracking-wider font-mono text-[#7f0019] bg-[#7f0019]/5 border border-[#7f0019]/20 px-1.5 py-0.5 font-normal">ONLINE</span>
+                        </h3>
+                        <span class="text-neutral-400 group-hover:text-neutral-600 transition-colors text-xs font-mono">👉 Visit</span>
+                    </div>
+                    <p class="text-xs text-neutral-500 font-light leading-relaxed tracking-wide">
+                        全栈 AI 处女作。基于 28 个核心维度与大模型能力，帮你深度度量与寻找契合灵魂的“精神家乡” 🗺️✨。
+                    </p>
+                </div>
+            </a>
+        </section>
+
+        <!-- 视频与内容创作者主战场 (Video Channels) -->
+        <section class="space-y-6">
+            <div class="flex items-center gap-3">
+                <span class="text-base">📺</span>
+                <h2 class="text-xs uppercase tracking-widest text-neutral-400 font-medium">Video & Content Space</h2>
+                <div class="h-[1px] bg-neutral-200 flex-1"></div>
+            </div>
+            
+            <!-- 社交媒体网格 -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                
+                <!-- 哔哩哔哩 -->
+                <a href="https://b23.tv/bmXH9sB" target="_blank" class="block p-5 bg-white border border-neutral-200 hover:border-neutral-400 transition-all duration-300 text-center space-y-2">
+                    <div class="text-2xl">⚡</div>
+                    <div class="text-sm font-medium text-neutral-800">哔哩哔哩</div>
+                    <div class="text-[11px] text-neutral-400 font-light tracking-wide">深度车评与体验 🎬</div>
+                </a>
+
+                <!-- 小红书 -->
+                <a href="https://www.xiaohongshu.com/user/profile/5b5200c84eacab35232b7c5d?xhsshare=CopyLink&appuid=5b5200c84eacab35232b7c5d&apptime=1726308747&share_id=bcc8e07d8b564aeba13337fc1930dd38" target="_blank" class="block p-5 bg-white border border-neutral-200 hover:border-neutral-400 transition-all duration-300 text-center space-y-2">
+                    <div class="text-2xl">📕</div>
+                    <div class="text-sm font-medium text-neutral-800">小红书</div>
+                    <div class="text-[11px] text-neutral-400 font-light tracking-wide">游牧生活与数码 📸</div>
+                </a>
+
+                <!-- 抖音 -->
+                <a href="https://v.douyin.com/ikYTod9Y" target="_blank" class="block p-5 bg-white border border-neutral-200 hover:border-neutral-400 transition-all duration-300 text-center space-y-2">
+                    <div class="text-2xl">🎵</div>
+                    <div class="text-sm font-medium text-neutral-800">抖音</div>
+                    <div class="text-[11px] text-neutral-400 font-light tracking-wide">短视频精彩瞬间 🚗</div>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 底部 (Footer) -->
+    <footer class="max-w-2xl w-full mx-auto px-6 py-10 border-t border-neutral-200 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] font-mono tracking-widest text-neutral-400">
+        <div>
+            © 2026 DAFEI. All rights reserved.
+        </div>
+        <div class="flex items-center gap-1 text-neutral-400 font-sans">
+            <span>🌾 Powered by Vibe Coding</span>
+        </div>
+    </footer>
+
+    <!-- 微信关注提示 Modal -->
+    <div id="wechat-modal" class="fixed inset-0 hidden items-center justify-center z-50" aria-hidden="true">
+        <div class="absolute inset-0 modal-backdrop" onclick="closeWechatModal()"></div>
+        <div class="relative max-w-md w-full mx-4 bg-white rounded-2xl border border-neutral-200 p-6 shadow-lg">
+            <div class="flex flex-col items-start gap-4">
+                <div class="text-2xl">🔍 请在微信搜索关注：宝藏大飞</div>
+                <p class="text-sm text-neutral-500">因微信跳转限制，无法直接打开公众号主页。请在微信客户端中搜索“宝藏大飞”并关注。</p>
+                <div class="w-full flex justify-end">
+                    <button class="px-4 py-2 rounded-lg bg-[#7f0019] text-white font-medium" onclick="closeWechatModal()">我知道了</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const wechatOpenBtn = document.getElementById('wechat-open');
+        const wechatModal = document.getElementById('wechat-modal');
+        function openWechatModal(){
+            wechatModal.classList.remove('hidden');
+            wechatModal.classList.add('flex');
+            wechatModal.setAttribute('aria-hidden','false');
+        }
+        function closeWechatModal(){
+            wechatModal.classList.remove('flex');
+            wechatModal.classList.add('hidden');
+            wechatModal.setAttribute('aria-hidden','true');
+        }
+        if (wechatOpenBtn){
+            wechatOpenBtn.addEventListener('click', (e)=>{ e.preventDefault(); openWechatModal(); });
+        }
+        // allow closing by ESC
+        window.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ closeWechatModal(); } });
+    </script>
+
+</body>
+</html>
