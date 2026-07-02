@@ -3,129 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>大飞的岛 🏝️</title>
+    <title>大飞的岛</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@300;500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --paper: #fcfbfa;
+            --ink: #333333;
+            --muted: #74716d;
+            --line: #e9e4dd;
+            --accent: #7f0019;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #fcfbfa; /* MUJI 经典的微暖标志性米白 */
-            color: #333333; /* 柔和的炭灰，避免死黑 */
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.58), rgba(252,251,250,0) 360px),
+                var(--paper);
+            color: var(--ink);
         }
-        /* 站点主标题使用思源黑体 */
+
         .muji-title {
             font-family: 'Noto Sans SC', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
             font-weight: 500;
             letter-spacing: 0.01em;
         }
-        /* MUJI 风格链接按钮 */
-        .muji-link {
-            background: #ffffff;
-            color: #333333;
-            border: 1px solid rgba(0,0,0,0.06);
-            box-shadow: 0 1px 4px rgba(17,24,39,0.03);
+
+        .serif-note {
+            font-family: 'Noto Serif SC', serif;
         }
-        .muji-link:hover { box-shadow: 0 6px 18px rgba(17,24,39,0.06); }
+
+        .soft-link {
+            background: #ffffff;
+            color: var(--ink);
+            border: 1px solid rgba(0,0,0,0.07);
+            box-shadow: 0 1px 4px rgba(17,24,39,0.03);
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+        }
+
+        .soft-link:hover {
+            transform: translateY(-1px);
+            border-color: rgba(0,0,0,0.18);
+            box-shadow: 0 10px 26px rgba(17,24,39,0.07);
+        }
+
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-label::after {
+            content: "";
+            height: 1px;
+            flex: 1;
+            background: var(--line);
+        }
+
+        .section-label h2 {
+            font-size: 0.75rem;
+            line-height: 1rem;
+            color: #8d8983;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+        }
+
+        .focus-ring:focus-visible {
+            outline: 2px solid rgba(127, 0, 25, 0.35);
+            outline-offset: 3px;
+        }
+
+        .modal-panel {
+            width: min(calc(100vw - 2rem), 24rem);
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-[#7f0019]/10 selection:text-[#7f0019]">
+<body class="min-h-screen selection:bg-[#7f0019]/10 selection:text-[#7f0019]">
+    <main class="max-w-2xl w-full mx-auto px-5 md:px-6 pt-20 md:pt-28 pb-16 md:pb-20 space-y-16 md:space-y-24">
 
-    <main class="max-w-2xl w-full mx-auto px-6 pt-28 pb-20 space-y-24">
-        
-        <header class="text-center space-y-6">
-            <div class="text-5xl md:text-7xl font-medium tracking-wider text-[#333333] muji-title select-none">
-                大飞的岛 🏝️
+        <header class="text-center space-y-7">
+            <div class="space-y-5">
+                <p class="text-xs tracking-[0.28em] text-neutral-400 font-light">DAFEI'S ISLAND</p>
+                <h1 class="text-5xl md:text-7xl font-medium tracking-wider text-[#333333] muji-title select-none">
+                    大飞的岛 🏝️
+                </h1>
+                <div class="w-12 h-[2px] bg-[#7f0019] mx-auto"></div>
             </div>
-            <div class="w-12 h-[2px] bg-[#7f0019] mx-auto my-4"></div> <p class="text-sm tracking-widest text-neutral-500 font-light flex flex-wrap justify-center gap-3 items-center">
-                <span>🚗 科技游牧民</span>
-                <span class="text-neutral-300">|</span>
-                <span>⚡ 新新能源车评人</span>
-                <span class="text-neutral-300">|</span>
-                <span>💻 独立开发者</span>
-            </p>
-            <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <a href="https://b23.tv/7Z8OmUP" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg muji-link hover:translate-y-[-1px] transition-transform text-sm">
-                    <span class="text-lg">📺</span>
-                    <span class="font-medium">宝藏小飞的 B 站 Vlog</span>
+
+            <div class="space-y-5">
+                <p class="text-sm tracking-widest text-neutral-500 font-light flex flex-wrap justify-center gap-x-3 gap-y-2 items-center">
+                    <span>科技游牧民</span>
+                    <span class="text-neutral-300">|</span>
+                    <span>新能源车评人</span>
+                    <span class="text-neutral-300">|</span>
+                    <span>独立开发者</span>
+                </p>
+
+                <p class="max-w-xl mx-auto text-sm md:text-base text-neutral-600 font-light leading-8">
+                    我是大飞，长期记录新能源车、城市生活、独立开发和数字游牧。这里是我的内容入口、作品陈列，也是一点精神自留地。
+                </p>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-center gap-3 pt-1">
+                <a href="https://b23.tv/7Z8OmUP" target="_blank" rel="noopener noreferrer" class="focus-ring inline-flex items-center gap-2 px-4 py-2.5 rounded-lg soft-link text-sm">
+                    <span aria-hidden="true">📺</span>
+                    <span class="font-medium">看 B 站 Vlog</span>
                 </a>
-                <button id="wechat-open" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg muji-link hover:translate-y-[-1px] transition-transform text-sm cursor-pointer">
-                    <span class="text-lg">✍️</span>
+                <button id="wechat-open" class="focus-ring inline-flex items-center gap-2 px-4 py-2.5 rounded-lg soft-link text-sm cursor-pointer" type="button">
+                    <span aria-hidden="true">✍️</span>
                     <span class="font-medium">微信公众号：宝藏大飞</span>
                 </button>
             </div>
         </header>
 
-        <section class="space-y-6">
-            <div class="flex items-center gap-3">
-                <span class="text-base">🚀</span>
-                <h2 class="text-xs uppercase tracking-widest text-neutral-400 font-medium">My Digital Product</h2>
-                <div class="h-[1px] bg-neutral-200 flex-1"></div>
+        <section class="space-y-6" aria-labelledby="product-title">
+            <div class="section-label">
+                <h2 id="product-title">我的作品</h2>
             </div>
-            
-            <a href="http://city.dafei.space" target="_blank" class="group block p-6 bg-white border border-neutral-200 hover:border-neutral-400 transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
-                <div class="space-y-3">
-                    <div class="flex justify-between items-baseline">
-                        <h3 class="text-lg font-medium text-neutral-800 flex items-center gap-2">
-                            <span>🏙️ 城市度量衡</span>
-                            <span class="text-[10px] tracking-wider font-mono text-[#7f0019] bg-[#7f0019]/5 border border-[#7f0019]/20 px-1.5 py-0.5 font-normal">ONLINE</span>
-                        </h3>
-                        <span class="text-neutral-400 group-hover:text-neutral-600 transition-colors text-xs font-mono">👉 Visit</span>
+
+            <a href="http://city.dafei.space" target="_blank" rel="noopener noreferrer" class="group block overflow-hidden bg-white border border-neutral-200 hover:border-neutral-400 transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.02)] focus-ring">
+                <div class="p-6 md:p-7 space-y-6">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                        <div class="space-y-2">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <h3 class="text-xl font-medium text-neutral-800">城市度量衡</h3>
+                                <span class="text-[10px] tracking-wider font-mono text-[#7f0019] bg-[#7f0019]/5 border border-[#7f0019]/20 px-1.5 py-0.5 font-normal">ONLINE</span>
+                            </div>
+                            <p class="text-sm text-neutral-500 font-light leading-7">
+                                用 AI 和 28 个维度，帮你判断一座城市是否适合长期生活。
+                            </p>
+                        </div>
+                        <span class="inline-flex items-center text-neutral-400 group-hover:text-neutral-700 transition-colors text-xs font-mono whitespace-nowrap">Visit →</span>
                     </div>
-                    <p class="text-xs text-neutral-500 font-light leading-relaxed tracking-wide">
-                        全栈 AI 处女作。基于 28 个核心维度与大模型能力，帮你深度度量与寻找契合灵魂的“精神家乡” 🗺️✨。
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-neutral-500">
+                        <div class="border border-neutral-100 bg-[#fcfbfa] p-3">
+                            <div class="font-medium text-neutral-700 mb-1">城市气质</div>
+                            <div class="font-light leading-5">气候、节奏、文化与生活便利度</div>
+                        </div>
+                        <div class="border border-neutral-100 bg-[#fcfbfa] p-3">
+                            <div class="font-medium text-neutral-700 mb-1">现实成本</div>
+                            <div class="font-light leading-5">房价、产业、通勤与长期机会</div>
+                        </div>
+                        <div class="border border-neutral-100 bg-[#fcfbfa] p-3">
+                            <div class="font-medium text-neutral-700 mb-1">精神坐标</div>
+                            <div class="font-light leading-5">找到更接近自己的生活半径</div>
+                        </div>
+                    </div>
+
+                    <p class="serif-note text-sm md:text-base text-neutral-600 leading-8 border-l-2 border-[#7f0019]/40 pl-4">
+                        这是我的全栈 AI 处女作，也是一次把“选择在哪里生活”这件事认真量化的尝试。
                     </p>
                 </div>
             </a>
         </section>
 
-        <section class="space-y-6">
-            <div class="flex items-center gap-3">
-                <span class="text-base">📺</span>
-                <h2 class="text-xs uppercase tracking-widest text-neutral-400 font-medium">Video & Content Space</h2>
-                <div class="h-[1px] bg-neutral-200 flex-1"></div>
+        <section class="space-y-6" aria-labelledby="channels-title">
+            <div class="section-label">
+                <h2 id="channels-title">内容频道</h2>
             </div>
-            
+
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <a href="https://b23.tv/bmXH9sB" target="_blank" class="block p-5 bg-white border border-neutral-200 hover:border-neutral-400 transition-all duration-300 text-center space-y-2">
-                    <div class="text-2xl">⚡</div>
+                <a href="https://b23.tv/bmXH9sB" target="_blank" rel="noopener noreferrer" class="focus-ring block p-5 bg-white border border-neutral-200 hover:border-neutral-400 transition-all duration-300 text-center space-y-2">
                     <div class="text-sm font-medium text-neutral-800">哔哩哔哩</div>
-                    <div class="text-[11px] text-neutral-400 font-light tracking-wide">深度车评与体验 🎬</div>
+                    <div class="text-[11px] text-neutral-400 font-light tracking-wide">深度车评与体验</div>
                 </a>
 
-                <a href="https://www.xiaohongshu.com/user/profile/5b5200c84eacab35232b7c5d?xhsshare=CopyLink&appuid=5b5200c84eacab35232b7c5d&apptime=1726308747&share_id=bcc8e07d8b564aeba13337fc1930dd38" target="_blank" class="block p-5 bg-white border border-neutral-200 hover:border-neutral-400 transition-all duration-300 text-center space-y-2">
-                    <div class="text-2xl">📕</div>
+                <a href="https://www.xiaohongshu.com/user/profile/5b5200c84eacab35232b7c5d?xhsshare=CopyLink&appuid=5b5200c84eacab35232b7c5d&apptime=1726308747&share_id=bcc8e07d8b564aeba13337fc1930dd38" target="_blank" rel="noopener noreferrer" class="focus-ring block p-5 bg-white border border-neutral-200 hover:border-neutral-400 transition-all duration-300 text-center space-y-2">
                     <div class="text-sm font-medium text-neutral-800">小红书</div>
-                    <div class="text-[11px] text-neutral-400 font-light tracking-wide">游牧生活与数码 📸</div>
+                    <div class="text-[11px] text-neutral-400 font-light tracking-wide">游牧生活与数码</div>
                 </a>
 
-                <a href="https://v.douyin.com/ikYTod9Y" target="_blank" class="block p-5 bg-white border border-neutral-200 hover:border-neutral-400 transition-all duration-300 text-center space-y-2">
-                    <div class="text-2xl">🎵</div>
+                <a href="https://v.douyin.com/ikYTod9Y" target="_blank" rel="noopener noreferrer" class="focus-ring block p-5 bg-white border border-neutral-200 hover:border-neutral-400 transition-all duration-300 text-center space-y-2">
                     <div class="text-sm font-medium text-neutral-800">抖音</div>
-                    <div class="text-[11px] text-neutral-400 font-light tracking-wide">短视频精彩瞬间 🚗</div>
+                    <div class="text-[11px] text-neutral-400 font-light tracking-wide">短视频精彩瞬间</div>
                 </a>
             </div>
         </section>
 
+        <section class="space-y-6" aria-labelledby="notes-title">
+            <div class="section-label">
+                <h2 id="notes-title">我正在关注</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="bg-white border border-neutral-200 px-4 py-3 text-sm text-neutral-600 font-light">新能源车真实体验</div>
+                <div class="bg-white border border-neutral-200 px-4 py-3 text-sm text-neutral-600 font-light">城市选择与生活方式</div>
+                <div class="bg-white border border-neutral-200 px-4 py-3 text-sm text-neutral-600 font-light">AI 产品与独立开发</div>
+                <div class="bg-white border border-neutral-200 px-4 py-3 text-sm text-neutral-600 font-light">数字游牧与长期主义</div>
+            </div>
+        </section>
+
+        <section class="space-y-6" aria-labelledby="recent-title">
+            <div class="section-label">
+                <h2 id="recent-title">最近在做</h2>
+            </div>
+
+            <div class="bg-white border border-neutral-200 p-5 md:p-6">
+                <ul class="space-y-3 text-sm text-neutral-600 font-light leading-7">
+                    <li class="flex gap-3">
+                        <span class="mt-[0.65rem] h-1 w-1 rounded-full bg-[#7f0019] flex-none"></span>
+                        <span>继续打磨「城市度量衡」，让它更像一个能陪你做生活选择的工具。</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="mt-[0.65rem] h-1 w-1 rounded-full bg-[#7f0019] flex-none"></span>
+                        <span>记录新能源车的真实长测体验，少一点参数堆叠，多一点日常判断。</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="mt-[0.65rem] h-1 w-1 rounded-full bg-[#7f0019] flex-none"></span>
+                        <span>用 AI 做小产品，也观察 AI 如何改变普通人的创作和工作流。</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
     </main>
 
-    <footer class="max-w-2xl w-full mx-auto px-6 py-10 border-t border-neutral-200 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] font-mono tracking-widest text-neutral-400">
+    <footer class="max-w-2xl w-full mx-auto px-5 md:px-6 py-10 border-t border-neutral-200 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] font-mono tracking-widest text-neutral-400">
         <div>© 2026 DAFEI. All rights reserved.</div>
         <div class="flex items-center gap-1 text-neutral-400 font-sans">
             <span>🌾 Powered by Vibe Coding</span>
         </div>
     </footer>
 
-    <div id="wechat-modal" class="fixed inset-0 hidden z-[9999]" style="background-color: rgba(0, 0, 0, 0.4); backdrop-filter: blur(4px);">
-        <div class="absolute inset-0" onclick="closeWechatModal()"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-sm w-full mx-auto p-6 bg-[#fcfbfa] border border-neutral-200 rounded-lg shadow-2xl text-center space-y-5">
-            <div class="text-xl font-medium text-neutral-800 tracking-wide">🔍 微信搜索关注：宝藏大飞</div>
-            <p class="text-xs text-neutral-500 font-light leading-relaxed">
-                由于跨平台跳转限制，无法从浏览器直接唤起微信。<br>请在微信内搜索并点击关注，感谢陪伴！
+    <div id="wechat-modal" class="fixed inset-0 hidden z-[9999]" style="background-color: rgba(0, 0, 0, 0.4); backdrop-filter: blur(4px);" role="dialog" aria-modal="true" aria-labelledby="wechat-title">
+        <button class="absolute inset-0 w-full h-full cursor-default" type="button" aria-label="关闭弹窗" onclick="closeWechatModal()"></button>
+        <div class="modal-panel absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 bg-[#fcfbfa] border border-neutral-200 rounded-lg shadow-2xl text-center space-y-5">
+            <div id="wechat-title" class="text-xl font-medium text-neutral-800 tracking-wide">微信搜索：宝藏大飞</div>
+            <p class="text-xs text-neutral-500 font-light leading-6">
+                我会在那里写一些更长的观察：新能源车、城市体验、独立开发，以及路上的生活。
             </p>
-            <button class="w-full py-2.5 bg-[#7f0019] text-white rounded text-xs tracking-widest font-medium hover:bg-[#660014] transition-colors cursor-pointer" onclick="closeWechatModal()">
-                我知道了
+            <button class="focus-ring w-full py-2.5 bg-[#7f0019] text-white rounded text-xs tracking-widest font-medium hover:bg-[#660014] transition-colors cursor-pointer" type="button" aria-label="关闭微信公众号提示" onclick="closeWechatModal()">
+                好的，去微信搜
             </button>
         </div>
     </div>
@@ -133,25 +251,27 @@
     <script>
         const wechatOpenBtn = document.getElementById('wechat-open');
         const wechatModal = document.getElementById('wechat-modal');
-        
-        function openWechatModal(){
+
+        function openWechatModal() {
             wechatModal.style.display = 'block';
         }
-        function closeWechatModal(){
+
+        function closeWechatModal() {
             wechatModal.style.display = 'none';
         }
-        
-        if (wechatOpenBtn){
-            wechatOpenBtn.addEventListener('click', (e) => { 
-                e.preventDefault(); 
-                openWechatModal(); 
+
+        if (wechatOpenBtn) {
+            wechatOpenBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+                openWechatModal();
             });
         }
-        // 按 ESC 键关闭弹窗
-        window.addEventListener('keydown', (e) => { 
-            if(e.key === 'Escape'){ closeWechatModal(); } 
+
+        window.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeWechatModal();
+            }
         });
     </script>
-
 </body>
 </html>
